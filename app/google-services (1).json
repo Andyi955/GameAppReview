@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "612971289348",
+    "firebase_url": "https://principal-zoo-272714.firebaseio.com",
+    "project_id": "principal-zoo-272714",
+    "storage_bucket": "principal-zoo-272714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612971289348:android:40af0fd3082981baf84e51",
+        "android_client_info": {
+          "package_name": "org.wit.gameapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612971289348-7ed0fbg21lvosf3jrpeqmp77o600b6sb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wit.gameapp",
+            "certificate_hash": "38fbb3e771eb789d79b3aa86125620a33d799b7f"
+          }
+        },
+        {
+          "client_id": "612971289348-gjse5h2uvm3dk52pv6cjl4r6use225sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJjA52tvNWInPPI4EvVML8QeI3TZrI1d0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612971289348-gjse5h2uvm3dk52pv6cjl4r6use225sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
