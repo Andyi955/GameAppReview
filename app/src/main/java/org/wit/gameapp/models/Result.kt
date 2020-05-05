@@ -3,6 +3,11 @@ package org.wit.gameapp.models
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Main model used to get api info
+ * about developers
+ */
+
 data class Result(
     @SerializedName("games")
     val games: List<Game>,

@@ -10,27 +10,27 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.*
-import android.widget.Button
-import android.widget.RatingBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.game_list_activity.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.gameapp.R
+import org.wit.gameapp.adapter.GameAdapter
+import org.wit.gameapp.adapter.GameListener
 import org.wit.gameapp.main.MainApp
 import org.wit.gameapp.models.GameModel
 import android.view.MenuItem as MenuItem
 /**
- * This is my main activity
- * It will be used to create a review for a game
- * by inputting text and selecting a image
+ * {HomePage}
+ * This is where my games will be listed
+ * It will display the game cards
+ * It will have the main menu icons
  *
- * B
- *
- *
+ * Will use the GameAdapter
  * **/
 
-class GameListActivity : AppCompatActivity() ,GameListener {
+class GameListActivity : AppCompatActivity() ,
+    GameListener {
 
     lateinit var app: MainApp
 
@@ -53,9 +53,20 @@ class GameListActivity : AppCompatActivity() ,GameListener {
 
     }
 
+    /**
+     * Allows game card to be selected then brought
+     * back to the game activity menu allowing it to be edited
+     */
     override fun onGameClick(game: GameModel) {
         startActivityForResult(intentFor<GameActivity>().putExtra("game_edit", game), 0)
     }
+
+    /**
+     * inflates the main menu
+     * displaying the 3 different icons
+     * Also has a search function that can't
+     * search.
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         val manager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
@@ -88,8 +99,11 @@ class GameListActivity : AppCompatActivity() ,GameListener {
     }
 
 
-
-
+    /**
+     * When the menu icons are pressed this
+     * will redirect them to the Activity they
+     * are designated
+     */
     override fun onOptionsItemSelected(item: MenuItem ?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<GameActivity>(0)//start GameActivity
@@ -100,16 +114,29 @@ class GameListActivity : AppCompatActivity() ,GameListener {
         return super.onOptionsItemSelected(item)
     }
 
+
+    /**
+     * This loads the games when the app starts
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         loadGames()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-
+    /**
+     * Uses the Game Review Interface
+     * method find all()
+     */
     private fun loadGames() {
         showGames(app.games.findAll())
     }
 
+    /**
+     * This uses GameModel as a list
+     * then uses the recycler view to display
+     * whats in the adapters
+     *
+     */
     fun showGames (games: List<GameModel>) {
         recyclerView.adapter = GameAdapter(games, this)
         recyclerView.adapter?.notifyDataSetChanged()

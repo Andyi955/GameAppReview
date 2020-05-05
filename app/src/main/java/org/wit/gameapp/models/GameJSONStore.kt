@@ -10,6 +10,11 @@ import org.wit.gameapp.helpers.*
 import java.util.*
 
 
+/**
+ *
+ * saves game to the json file
+ *
+ */
 
 
 val JSON_FILE = "games.json"

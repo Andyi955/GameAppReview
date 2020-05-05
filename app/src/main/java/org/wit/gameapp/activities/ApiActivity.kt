@@ -18,7 +18,8 @@ import org.wit.gameapp.models.Result
 
 /**
  * This is my Api class it will have
- * the methods i need to vew
+ * the methods i need to access the api
+ *
  *
  *
  *
@@ -55,7 +56,7 @@ class ApiActivity : AppCompatActivity() {
 
               AndroidNetworking.initialize(this)
            //Android
-              AndroidNetworking.get("https://api.rawg.io/api/developers") //gets my api
+              AndroidNetworking.get("https://api.rawg.io/api/developers") //gets my api from the endpoint
 
 
             .build()

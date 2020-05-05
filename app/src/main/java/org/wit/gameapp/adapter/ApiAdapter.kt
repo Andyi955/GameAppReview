@@ -12,16 +12,26 @@ import org.wit.gameapp.activities.MyHolder
 import org.wit.gameapp.models.Game
 import org.wit.gameapp.models.Result
 
+
+/**
+ * This the API adapter
+ * It will allow me to display
+ * the values from the result model
+ * for the recycler view
+ *
+ *
+ */
+
 class ApiAdapter(private val dataList: MutableList<Result>) : RecyclerView.Adapter<MyHolder>() {
 
     private lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MyHolder {
         context = parent.context
-        return MyHolder(LayoutInflater.from(context).inflate(R.layout.api_cards,parent,false))
+        return MyHolder(LayoutInflater.from(context).inflate(R.layout.api_cards,parent,false)) // opens api_cards
     }
 
     override fun getItemCount(): Int {
-        return dataList.size}
+        return dataList.size} // gets the size of result model
 
 
 
@@ -29,20 +39,20 @@ class ApiAdapter(private val dataList: MutableList<Result>) : RecyclerView.Adapt
 
         val data = dataList[p1]
 
-        val videoName = holder.itemView.GameTitleApi //id from the xml file api_cards gets the titles
+        val GameName = holder.itemView.GameTitleApi //id from the xml file api_cards gets the titles
         val apiImage = holder.itemView.imageView    //id from the xml file api_cards gets the image
-        val released = holder.itemView.released      //gets the date
+        val counted = holder.itemView.counts
 
-        val vidname = "${data.name} "
-        val datereleased = "${data.gamesCount}"
-        videoName.text = vidname
-        released.text = datereleased
-        Picasso.get()
-            .load(data.imageBackground)
+        val gname = "${data.name} "
+        val amount = "${data.gamesCount}"
+        GameName.text = gname //allows the values from result api to be displayed onto the cards
+        counted.text = amount
+        Picasso.get() //
+            .load(data.imageBackground) //displays background image
             .into(apiImage)
 
         holder.itemView.setOnClickListener{
-            Toast.makeText(context, vidname,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, gname,Toast.LENGTH_SHORT).show() //displays the name of the
         }
 
     }

@@ -51,7 +51,7 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.game_activity)
+        setContentView(R.layout.game_activity) // launches game activity
 
 
 
@@ -60,7 +60,7 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
-
+  //enables to toolbar
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
@@ -70,6 +70,7 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
         if (intent.hasExtra("game_edit")) {
             edit = true
 
+            //allows game to be edited
             game = intent.extras.getParcelable<GameModel>("game_edit")
             gameTitle.setText(game.title)
             comment.setText(game.comment)
@@ -125,11 +126,11 @@ class GameActivity : AppCompatActivity(), AnkoLogger {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_delete -> {
-    app.games.delete(game)
+    app.games.delete(game) //deletes the game that you have selected
         finish()
     }
     R.id.item_cancel -> {
-        finish()
+        finish()  //brings you back to the home screen
     }
 
 }
@@ -139,7 +140,7 @@ return super.onOptionsItemSelected(item)
 
 
 
-    //gets the game image
+    //gets the game image and saves it
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
